@@ -1,0 +1,20 @@
+let atualMusic = song.title; // Música tocando.
+let musicTime = 'Em breve'; // Tempo da música.
+let albumMusic = "Em breve";
+let musicImageLink = song.musicImageLink;
+let createdAtH = `${message.createdAt.getHours()}:${message.createdAt.getMinutes()}:${message.createdAt.getSeconds()}`
+//#endregion
+
+//#region Embed
+if (message.author.bot) { return; } // Se a mensagem for do autor, parar a função.
+
+if (message.content.toLowerCase() == ";play"){ // Demo do embed.
+    const Embed = new Discord.MessageEmbed() 
+        .setTitle(`:musical_note: | Tocando: ${atualMusic}...`)
+        .setDescription(`**:alarm_clock: | Tempo: ${musicTime}\n :dvd: | Álbum: ${albumMusic}.**`) // Jotinha,
+        .setThumbnail('https://i.imgur.com/rjZ4c3b.gif')
+        .setFooter(`por ${message.author.username}, às ${createdAtH}.`)
+        .setImage(`${musicImageLink}`)
+        .setColor('#7b11ed');
+        message.channel.send(Embed);
+}
